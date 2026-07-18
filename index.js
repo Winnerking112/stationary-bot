@@ -11,9 +11,9 @@ server.listen(PORT, () => {
   console.log(`Web server listening on port ${PORT}`);
 });
 
-// 🟢 2. Your Minecraft Bot Settings (Updated with barramundi address!)
+// 🟢 2. Your Minecraft Bot Settings (Updated with clingfish address!)
 const bot = mineflayer.createBot({
-  host: 'barramundi.aternos.host', 
+  host: 'clingfish.aternos.host', 
   port: 22540,                  
   username: 'Stationary_Worker'
 });
