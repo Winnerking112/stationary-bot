@@ -11,9 +11,9 @@ server.listen(PORT, () => {
   console.log(`Web server listening on port ${PORT}`);
 });
 
-// 🟢 2. Your Minecraft Bot Settings (Updated with your dynamic host!)
+// 🟢 2. Your Minecraft Bot Settings (Updated with horsefish address!)
 const bot = mineflayer.createBot({
-  host: 'chub.aternos.host', 
+  host: 'horsefish.aternos.host', 
   port: 22540,                  
   username: 'Stationary_Worker'
 });
