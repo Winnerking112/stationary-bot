@@ -11,10 +11,10 @@ server.listen(PORT, () => {
   console.log(`Web server listening on port ${PORT}`);
 });
 
-// 🟢 2. Your Minecraft Bot Settings
+// 🟢 2. Your Minecraft Bot Settings (Updated with your server address!)
 const bot = mineflayer.createBot({
-  host: 'YOUR_SERVER_IP_HERE', // Put your server IP here
-  port: 25565,                  // Put your server port here
+  host: 'VIFProGang.aternos.me', 
+  port: 22540,                  
   username: 'Stationary_Worker'
 });
 
