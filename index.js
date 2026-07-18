@@ -1,8 +1,20 @@
 const mineflayer = require('mineflayer');
+const http = require('http');
 
+// 🟢 1. Free Hosting Trick: Create a dummy web server so Render runs it for $0
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Bot is running 24/7!\n');
+});
+const PORT = process.env.PORT || 10000;
+server.listen(PORT, () => {
+  console.log(`Web server listening on port ${PORT}`);
+});
+
+// 🟢 2. Your Minecraft Bot Settings
 const bot = mineflayer.createBot({
-  host: 'YOUR_SERVER_IP_HERE', // 🟢 Put your server IP here
-  port: 25565,                  // 🟢 Put your server port here
+  host: 'YOUR_SERVER_IP_HERE', // Put your server IP here
+  port: 25565,                  // Put your server port here
   username: 'Stationary_Worker'
 });
 
@@ -10,7 +22,6 @@ let mineInterval = null;
 
 bot.on('spawn', () => {
   console.log('🤖 Bot joined! Ready for teleportation.');
-  
   if (mineInterval) clearInterval(mineInterval);
 
   // Automatically mine whatever block it looks at every 1200ms
