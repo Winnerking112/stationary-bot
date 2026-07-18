@@ -11,11 +11,12 @@ server.listen(PORT, () => {
   console.log(`Web server listening on port ${PORT}`);
 });
 
-// 🟢 2. Your Minecraft Bot Settings (Updated with clingfish address!)
+// 🟢 2. Your Minecraft Bot Settings (Hardcoded to version 1.21.1)
 const bot = mineflayer.createBot({
   host: 'clingfish.aternos.host', 
   port: 22540,                  
-  username: 'Stationary_Worker'
+  username: 'Stationary_Worker',
+  version: '1.21.1' // 👈 Explicitly forces the 1.21.1 protocol matching your server
 });
 
 let mineInterval = null;
