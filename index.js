@@ -11,12 +11,11 @@ server.listen(PORT, () => {
   console.log(`Web server listening on port ${PORT}`);
 });
 
-// 🟢 2. Mineflayer Bot Connection Settings
+// 🟢 2. Mineflayer Bot Connection Settings (Vanilla Server)
 const bot = mineflayer.createBot({
   host: 'VIFGang2.aternos.me',
   port: 64831,
-  username: 'Stationary_Worker',
-  checkTimeoutInterval: 60 * 1000
+  username: 'Stationary_Worker'
 });
 
 let mineInterval = null;
