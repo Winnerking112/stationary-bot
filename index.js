@@ -1,7 +1,7 @@
 const mineflayer = require('mineflayer');
 const http = require('http');
 
-// 🟢 1. Free Hosting Trick: Create a dummy web server so Render runs it for $0
+// 🟢 1. Web server to keep Render online
 const server = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('Bot is running 24/7!\n');
@@ -11,21 +11,20 @@ server.listen(PORT, () => {
   console.log(`Web server listening on port ${PORT}`);
 });
 
-// 🟢 2. Your Minecraft Bot Settings (Hardcoded to version 1.21.1)
+// 🟢 2. Bot Connection
 const bot = mineflayer.createBot({
-  host: 'clingfish.aternos.host', 
-  port: 22540,                  
+  host: 'YOUR-NEW-HOST.aternos.host', // 👈 Put your new host here
+  port: 12345,                        // 👈 Put your new 5-digit port here
   username: 'Stationary_Worker',
-  version: '1.21.1' // 👈 Explicitly forces the 1.21.1 protocol matching your server
+  checkTimeoutInterval: 60 * 1000
 });
 
 let mineInterval = null;
 
 bot.on('spawn', () => {
-  console.log('🤖 Bot joined! Ready for teleportation.');
+  console.log('🤖 Bot joined successfully!');
   if (mineInterval) clearInterval(mineInterval);
 
-  // Automatically mine whatever block it looks at every 1200ms
   mineInterval = setInterval(() => {
     const block = bot.blockAtCursor(4);
     if (block && bot.canDigBlock(block)) {
@@ -36,7 +35,7 @@ bot.on('spawn', () => {
   }, 1200);
 });
 
-// Snap direction commands via in-game chat
+// Direction commands
 bot.on('chat', (username, message) => {
   if (username === bot.username) return;
   const command = message.toLowerCase().trim();
@@ -48,4 +47,5 @@ bot.on('chat', (username, message) => {
 });
 
 bot.on('error', err => console.log('Bot Error:', err));
-bot.on('end', () => console.log('Disconnected.'));
+bot.on('kicked', reason => console.log('Kicked for:', reason));
+bot.on('end', () => console.log('Disconnected from server.'));
